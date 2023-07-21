@@ -12,8 +12,9 @@ body {
     display: flex;
     flex-direction: column;
     background-color: grey;
+    border-radius: 10px;
 }
-
+/* screen */
 .screen {
     height: 100px;
     display: flex;
@@ -24,7 +25,7 @@ body {
     flex: 1;
     margin: 20px;
 }
-
+/* grid */
 .grid {
     flex: 1;
     display: flex;
@@ -40,6 +41,10 @@ body {
 
 button {
     padding: 2em;
-    /* height: min(80px,15vw);
-    width: min(80px,15vw); */
+}
+
+button, .screenspace {
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
 }
