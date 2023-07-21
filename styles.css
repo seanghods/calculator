@@ -6,7 +6,7 @@ body {
 .calculator {
     text-align: center;
     width: min(600px, 75vw);
-    height: min(600px, 75vw);
+    height: min(600px, 150vw);
     margin: 10vw;
     border: 3px solid black;
     display: flex;
@@ -15,7 +15,7 @@ body {
 }
 
 .screen {
-    height: 15vw;
+    height: 100px;
     display: flex;
 }
 
@@ -39,6 +39,7 @@ body {
 }
 
 button {
-    height: 80px;
-    width: 80px;
+    padding: 2em;
+    /* height: min(80px,15vw);
+    width: min(80px,15vw); */
 }

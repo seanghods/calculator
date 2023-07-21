@@ -15,5 +15,14 @@ function divide(firstNumber, secondNumber) {
 }
 
 function operate(firstNumber, secondNumber, operator) {
-    return firstNumber operator secondNumber;
+    switch (operator) {
+        case 'add':
+            return add(firstNumber, secondNumber);
+        case 'sub':
+            return subtract(firstNumber, secondNumber);
+        case 'mult':
+            return multiply(firstNumber, secondNumber);
+        case 'div':
+            return divide(firstNumber, secondNumber);
+    }
 }
