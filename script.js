@@ -8,12 +8,58 @@ const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator")
 const clearButton = document.querySelector(".clear")
 const equalButton = document.querySelector(".equal")
+const allButtons = document.querySelectorAll("button")
 
 window.onload = () => {
     numberButtonFunc();
     operatorButtonFunc();
     clearButtonFunc();
     equalButtonFunc();
+    blurButtons();
+    keyboardFunc();
+}
+
+function keyboardFunc() {
+    document.addEventListener('keydown', (e) => {
+        let arrNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        let arrOperators = ['+', '-', '/', 'x'];
+        if (arrNumbers.includes(e.key)) {
+            if (beforeOperator) {
+                firstNumber += e.key;
+                screenSpace.innerHTML = firstNumber;
+            } else {
+                secondNumber += e.key;
+                screenSpace.innerHTML = secondNumber;
+            }
+        } else if (arrOperators.includes(e.key)) {
+            switch (e.key) {
+                case '+':
+                operator = 'plus';
+                break;
+                case '-':
+                operator = 'sub';
+                break;
+                case 'x':
+                operator = 'mult';
+                break;
+                case '/':
+                operator = 'div';
+                break
+            }
+            screenSpace.innerHTML = e.key;
+            secondNumber = '';
+            beforeOperator = 0;
+        } else if (e.key == '=') {
+            let result = operate(firstNumber, secondNumber, operator);
+            firstNumber = result;
+        } else if (e.code == 'Space') {
+            firstNumber = '';
+            secondNumber = '';
+            operator = '';
+            screenSpace.innerHTML = 'CLEARED';
+            beforeOperator = 1;
+        }
+    })
 }
 
 function numberButtonFunc() {
@@ -55,6 +101,14 @@ function equalButtonFunc() {
     equalButton.addEventListener('click', () => {
         let result = operate(firstNumber, secondNumber, operator);
         firstNumber = result;
+    })
+}
+
+function blurButtons() {
+    allButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.target.blur();
+        })
     })
 }
 
